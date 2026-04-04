@@ -2,6 +2,7 @@ import React, { Suspense, useState, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Environment, Float, PerspectiveCamera } from '@react-three/drei'
 import LiquidRibbon from './LiquidRibbon'
+import FloatingBubbles from './FloatingBubbles'
 
 const Scene = () => {
   const root = typeof document !== 'undefined' ? document.getElementById('root') : undefined
@@ -27,17 +28,7 @@ const Scene = () => {
   }, []);
 
   if (isMobile) {
-    return (
-      <div 
-        className="canvas-container" 
-        aria-hidden="true" 
-        style={{
-          background: 'radial-gradient(circle at 60% 40%, rgba(186, 230, 253, 0.45) 0%, rgba(248, 250, 252, 0) 65%)',
-          pointerEvents: 'none',
-          zIndex: 0
-        }} 
-      />
-    );
+    return <FloatingBubbles />;
   }
 
   return (

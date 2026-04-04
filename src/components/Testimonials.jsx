@@ -14,22 +14,36 @@ export default function Testimonials() {
   const sectionRef = useRef(null);
   const wrapRef = useRef(null);
   const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const [index, setIndex] = useState(0);
   const { t } = useLanguage();
   const itemsArray = t.testimonials.items;
 
   const measure = useCallback(() => {
     const el = wrapRef.current;
-    if (el) setWidth(el.offsetWidth);
+    if (el) {
+      setWidth(el.offsetWidth);
+      // measure height of one slide for vertical scrolling offset
+      const slide = el.querySelector('.testimonial-slide');
+      if (slide) {
+        setHeight(slide.offsetHeight);
+      }
+    }
+    setIsMobile(window.innerWidth < 768);
   }, []);
 
   useLayoutEffect(() => {
     measure();
+    window.addEventListener('resize', measure);
     const el = wrapRef.current;
     if (!el) return;
     const ro = new ResizeObserver(measure);
     ro.observe(el);
-    return () => ro.disconnect();
+    return () => {
+      window.removeEventListener('resize', measure);
+      ro.disconnect();
+    };
   }, [measure]);
 
   const go = useCallback(
@@ -73,7 +87,8 @@ export default function Testimonials() {
     return () => ctx.revert();
   }, []);
 
-  const offset = width > 0 ? -index * width : 0;
+  const offsetX = width > 0 ? -index * width : 0;
+  const offsetY = height > 0 ? -index * height : 0;
 
   return (
     <section className="testimonials section-aria" id="testimonials" aria-labelledby="testimonials-heading" ref={sectionRef}>
@@ -86,10 +101,14 @@ export default function Testimonials() {
           <p className="section-lead">{t.testimonials.lead}</p>
         </div>
 
-        <div className="carousel-wrap" ref={wrapRef}>
+        <div className={`carousel-wrap ${isMobile ? 'is-vertical' : ''}`} ref={wrapRef} style={{ height: isMobile && height > 0 ? height : 'auto' }}>
           <div
             className="carousel-track"
-            style={{ transform: `translate3d(${offset}px,0,0)` }}
+            style={{ 
+              transform: isMobile 
+                ? `translate3d(0,${offsetY}px,0)` 
+                : `translate3d(${offsetX}px,0,0)` 
+            }}
           >
             {itemsArray.map((item, idx) => (
               <div key={STYLES[idx].name} className="testimonial-slide">

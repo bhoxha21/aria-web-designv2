@@ -5,6 +5,9 @@ const MagneticElement = ({ children, className }) => {
   const ref = useRef(null);
 
   useEffect(() => {
+    const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    if (isTouch) return;
+
     const element = ref.current;
     if (!element) return;
 

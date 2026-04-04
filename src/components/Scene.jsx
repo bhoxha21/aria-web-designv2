@@ -1,10 +1,44 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useState, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Environment, Float, PerspectiveCamera } from '@react-three/drei'
 import LiquidRibbon from './LiquidRibbon'
 
 const Scene = () => {
   const root = typeof document !== 'undefined' ? document.getElementById('root') : undefined
+
+  const [isMobile, setIsMobile] = useState(() => 
+    typeof window !== 'undefined' ? window.innerWidth <= 1024 : false
+  );
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    let timeoutId;
+    const checkMobile = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setIsMobile(window.innerWidth <= 1024);
+      }, 150);
+    };
+    window.addEventListener('resize', checkMobile);
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+  if (isMobile) {
+    return (
+      <div 
+        className="canvas-container" 
+        aria-hidden="true" 
+        style={{
+          background: 'radial-gradient(circle at 60% 40%, rgba(186, 230, 253, 0.45) 0%, rgba(248, 250, 252, 0) 65%)',
+          pointerEvents: 'none',
+          zIndex: 0
+        }} 
+      />
+    );
+  }
 
   return (
     <div className="canvas-container" aria-hidden="true">
@@ -16,7 +50,7 @@ const Scene = () => {
           stencil: false,
           depth: true,
         }}
-        dpr={[1, 2]}
+        dpr={[1, 1.5]}
         eventSource={root ?? undefined}
         eventPrefix="client"
       >

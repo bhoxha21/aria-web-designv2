@@ -12,7 +12,8 @@ import FloatingStats from './components/FloatingStats'
 import Testimonials from './components/Testimonials'
 import CTA from './components/CTA'
 import SiteFooter from './components/SiteFooter'
-import Scene from './components/Scene'
+
+const Scene = React.lazy(() => import('./components/Scene'))
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -57,7 +58,9 @@ function App() {
   return (
     <div className="app-container">
       <CustomCursor />
-      <Scene />
+      <React.Suspense fallback={<div className="canvas-container" style={{ background: '#f8fafc', zIndex: 0 }} />}>
+        <Scene />
+      </React.Suspense>
       <Navigation />
       <main id="main-content">
         <Hero />

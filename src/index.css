@@ -372,9 +372,13 @@ button:focus-visible {
 .section-lead {
   font-size: 1.05rem;
   color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  text-shadow: 
+    0 1px 3px #000,
+    0 3px 8px #000,
+    0 6px 20px rgba(0, 0, 0, 1),
+    0 12px 40px rgba(0, 0, 0, 0.9);
   line-height: 1.8;
-  font-weight: 400;
+  font-weight: 500;
   max-width: 560px;
 }
 

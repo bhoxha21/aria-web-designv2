@@ -4,8 +4,14 @@ import gsap from 'gsap';
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: -100, y: -100 });
   const [isMagnetic, setIsMagnetic] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
+    const hasTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    setIsTouch(hasTouch);
+
+    if (hasTouch) return;
+
     const onMouseMove = (e) => {
       // Instead of purely React state updating which can lag,
       // we can also use GSAP to move the cursor for buttery smoothness.
@@ -35,6 +41,8 @@ const CustomCursor = () => {
       document.removeEventListener('magnetic-leave', handleMagneticLeave);
     };
   }, []);
+
+  if (isTouch) return null;
 
   return (
     <div

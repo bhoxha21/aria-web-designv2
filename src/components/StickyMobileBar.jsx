@@ -7,8 +7,8 @@ export default function StickyMobileBar() {
 
   const waMsg = encodeURIComponent(
     lang === 'es'
-      ? 'Hola Aria Web Design, quiero información sobre el paquete de $697 y el soporte NFC gratis.'
-      : 'Hi Aria Web Design, I would like information about the $697 bundle and free NFC stand.'
+      ? 'Hola Aria Web Design, quiero información sobre el paquete de $597 y el soporte NFC gratis.'
+      : 'Hi Aria Web Design, I would like information about the $597 bundle and free NFC stand.'
   );
 
   return (

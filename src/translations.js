@@ -1,7 +1,7 @@
 export const translations = {
   en: {
     nav: {
-      offer: 'The $697 Bundle',
+      offer: 'The $597 Bundle',
       proof: 'Live Proof of Work',
       advantage: 'The Unfair Advantage',
       process: 'How It Works',
@@ -23,13 +23,13 @@ export const translations = {
     },
     offer: {
       tag: 'The Core Offer & Risk Reversal',
-      title: 'The $697 All-In-One Revenue Bundle',
+      title: 'The $597 All-In-One Revenue Bundle',
       subtitle: 'An unfair advantage for high-foot-traffic local businesses. One flat investment. Lifetime ownership. Zero monthly maintenance fees.',
-      price: '$697',
+      price: '$597',
       pricePeriod: 'one-time flat investment',
       priceNote: 'No monthly retainer • You own 100% of your code and domain forever',
       badge: 'Limited to 5 Local Businesses This Month',
-      whatsIncludedTitle: 'Everything You Get in the $697 Bundle:',
+      whatsIncludedTitle: 'Everything You Get in the $597 Bundle:',
       items: [
         {
           title: 'Custom Mobile-First Website ($1,800 Value)',
@@ -54,7 +54,7 @@ export const translations = {
       ],
       guaranteeTitle: 'Our Ironclad "Zero-Risk" Guarantee',
       guaranteeDesc: 'We build your first interactive mobile prototype within 24 to 48 hours. If you are not blown away by the speed, design caliber, and conversion mechanics before launch, you don’t pay. Zero risk. Pure performance.',
-      ctaBtn: 'Claim Your $697 Bundle & Free NFC Stand',
+      ctaBtn: 'Claim Your $597 Bundle & Free NFC Stand',
     },
     advantage: {
       tag: 'The Flywheel Effect',
@@ -133,7 +133,7 @@ export const translations = {
       ],
       ariaWayTitle: 'The Aria Web Design Model',
       ariaWayItems: [
-        'One flat $697 investment for an ultra-fast, custom-coded mobile conversion storefront.',
+        'One flat $597 investment for an ultra-fast, custom-coded mobile conversion storefront.',
         '$0/month forever. Zero maintenance lock-in. You own 100% of the code and assets.',
         'Free custom physical acrylic NFC review stand turns counter transactions into 5-star reviews.',
         'Rapid 24–48 hour live interactive prototype you can test on your phone.',
@@ -184,7 +184,7 @@ export const translations = {
     close: {
       badge: 'Immediate Action Required',
       title: 'Ready to Dominate Your Local Market?',
-      subtitle: 'Claim your $697 all-in-one bundle today. Includes a custom conversion-engineered website and your free physical acrylic NFC Google Review stand.',
+      subtitle: 'Claim your $597 all-in-one bundle today. Includes a custom conversion-engineered website and your free physical acrylic NFC Google Review stand.',
       note: 'Zero sales pressure. Free technical audit and interactive NFC review walkthrough.',
       form: {
         businessName: 'Business Name',
@@ -217,7 +217,7 @@ export const translations = {
       brand: 'Aria Web Design',
       tagline: 'High-Impact Local Revenue Engines & NFC Review Automation',
       links: [
-        { href: '#offer', label: 'The $697 Bundle' },
+        { href: '#offer', label: 'The $597 Bundle' },
         { href: '#proof', label: 'Proof of Work' },
         { href: '#advantage', label: 'The Unfair Advantage' },
         { href: '#process', label: 'Our Process' },
@@ -229,7 +229,7 @@ export const translations = {
   },
   es: {
     nav: {
-      offer: 'Paquete de $697',
+      offer: 'Paquete de $597',
       proof: 'Casos Reales',
       advantage: 'La Ventaja Injusta',
       process: 'Cómo Funciona',
@@ -251,13 +251,13 @@ export const translations = {
     },
     offer: {
       tag: 'La Oferta Principal y Cero Riesgo',
-      title: 'El Paquete Todo-En-Uno de $697',
+      title: 'El Paquete Todo-En-Uno de $597',
       subtitle: 'Una ventaja injusta para negocios locales con tráfico de clientes. Inversión fija única. Propiedad de por vida. Sin mensualidades de mantenimiento.',
-      price: '$697',
+      price: '$597',
       pricePeriod: 'inversión única y definitiva',
       priceNote: 'Sin pagos mensuales • Eres dueño al 100% de tu código y dominio para siempre',
       badge: 'Cupos Limitados a 5 Negocios Este Mes',
-      whatsIncludedTitle: 'Todo Lo Que Incluye el Paquete de $697:',
+      whatsIncludedTitle: 'Todo Lo Que Incluye el Paquete de $597:',
       items: [
         {
           title: 'Sitio Web Móvil de Alta Conversión (Valor: $1,800)',
@@ -282,7 +282,7 @@ export const translations = {
       ],
       guaranteeTitle: 'Nuestra Garantía Inquebrantable de Cero Riesgo',
       guaranteeDesc: 'Construimos tu primer prototipo móvil interactivo en 24 a 48 horas. Si antes del lanzamiento no quedas completamente impresionado por la velocidad, el diseño y la potencia de venta, no pagas nada. Cero riesgo.',
-      ctaBtn: 'Reclamar Paquete de $697 y Soporte NFC Gratis',
+      ctaBtn: 'Reclamar Paquete de $597 y Soporte NFC Gratis',
     },
     advantage: {
       tag: 'El Efecto Multiplicador',
@@ -361,7 +361,7 @@ export const translations = {
       ],
       ariaWayTitle: 'El Modelo de Aria Web Design',
       ariaWayItems: [
-        'Una inversión única y fija de $697 por un sitio web codificado a mano para máxima conversión.',
+        'Una inversión única y fija de $597 por un sitio web codificado a mano para máxima conversión.',
         '$0 al mes para siempre. Cero mensualidades. Eres dueño del 100% del código y tus activos.',
         'Soporte acrílico NFC físico gratis que convierte a tus clientes en persona en reseñas de 5 estrellas.',
         'Primer prototipo móvil interactivo en 24 a 48 horas que puedes probar en tu propio teléfono.',
@@ -412,7 +412,7 @@ export const translations = {
     close: {
       badge: 'Acción Inmediata Requerida',
       title: '¿Listo Para Dominar Tu Mercado Local?',
-      subtitle: 'Reclama hoy tu paquete todo-en-uno de $697. Incluye sitio web móvil de alta conversión y tu soporte acrílico NFC de Google Reviews gratis.',
+      subtitle: 'Reclama hoy tu paquete todo-en-uno de $597. Incluye sitio web móvil de alta conversión y tu soporte acrílico NFC de Google Reviews gratis.',
       note: 'Sin llamadas de ventas agresivas. Auditoría de velocidad y demostración NFC 100% gratuita.',
       form: {
         businessName: 'Nombre del Negocio',
@@ -445,7 +445,7 @@ export const translations = {
       brand: 'Aria Web Design',
       tagline: 'Motores de Ingresos Locales y Automatización de Reseñas con NFC',
       links: [
-        { href: '#offer', label: 'Paquete de $697' },
+        { href: '#offer', label: 'Paquete de $597' },
         { href: '#proof', label: 'Casos Reales' },
         { href: '#advantage', label: 'La Ventaja Injusta' },
         { href: '#process', label: 'Nuestro Proceso' },

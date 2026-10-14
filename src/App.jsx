@@ -1,79 +1,34 @@
-import React, { useEffect } from 'react'
-import Lenis from '@studio-freight/lenis'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import CustomCursor from './components/CustomCursor'
-import Navigation from './components/Navigation'
-import Hero from './components/Hero'
-import WhyWebsite from './components/WhyWebsite'
-import WhyAria from './components/WhyAria'
-import Process from './components/Process'
-import FloatingStats from './components/FloatingStats'
-import Testimonials from './components/Testimonials'
-import CTA from './components/CTA'
-import SiteFooter from './components/SiteFooter'
-
-const Scene = React.lazy(() => import('./components/Scene'))
-
-gsap.registerPlugin(ScrollTrigger)
+import React from 'react';
+import Navigation from './components/Navigation';
+import Hero from './components/Hero';
+import OfferBundle from './components/OfferBundle';
+import PortfolioProof from './components/PortfolioProof';
+import ContrastComparison from './components/ContrastComparison';
+import Process from './components/Process';
+import Testimonials from './components/Testimonials';
+import WalkthroughForm from './components/WalkthroughForm';
+import SiteFooter from './components/SiteFooter';
+import StickyMobileBar from './components/StickyMobileBar';
+import CustomCursor from './components/CustomCursor';
 
 function App() {
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.35,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-      infinite: false,
-      autoRaf: false,
-    })
-
-    lenis.on('scroll', ScrollTrigger.update)
-
-    const ticker = (time) => {
-      lenis.raf(time * 1000)
-    }
-    gsap.ticker.add(ticker)
-    gsap.ticker.lagSmoothing(0)
-
-    const onResize = () => {
-      ScrollTrigger.refresh()
-    }
-    window.addEventListener('resize', onResize)
-
-    requestAnimationFrame(() => {
-      ScrollTrigger.refresh()
-    })
-
-    return () => {
-      window.removeEventListener('resize', onResize)
-      gsap.ticker.remove(ticker)
-      lenis.destroy()
-    }
-  }, [])
-
   return (
     <div className="app-container">
       <CustomCursor />
-      <React.Suspense fallback={<div className="canvas-container" style={{ background: '#f8fafc', zIndex: 0 }} />}>
-        <Scene />
-      </React.Suspense>
       <Navigation />
       <main id="main-content">
         <Hero />
-        <WhyWebsite />
-        <WhyAria />
+        <OfferBundle />
+        <PortfolioProof />
+        <ContrastComparison />
         <Process />
-        <FloatingStats />
         <Testimonials />
-        <CTA />
+        <WalkthroughForm />
       </main>
       <SiteFooter />
+      <StickyMobileBar />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

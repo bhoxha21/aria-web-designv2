@@ -1,135 +1,137 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import MagneticElement from './MagneticElement';
-import { ArrowDown, ArrowRight } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Zap, Sparkles, Smartphone, CheckCircle2, Star } from 'lucide-react';
 
-const Hero = () => {
-  const containerRef = useRef(null);
+export default function Hero() {
   const { t } = useLanguage();
+  const [tapSuccess, setTapSuccess] = useState(false);
 
-  useEffect(() => {
-    const words = document.querySelectorAll('.hero-h1 .word');
-
-    gsap.fromTo(
-      words,
-      { y: '100%', opacity: 0, rotateZ: 5 },
-      {
-        y: '0%',
-        opacity: 1,
-        rotateZ: 0,
-        duration: 1.2,
-        stagger: 0.05,
-        ease: 'power4.out',
-        delay: 0.2,
-      }
-    );
-
-    gsap.fromTo('.hero-sub', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 1, delay: 1, ease: 'power2.out' });
-    gsap.fromTo('.hero-actions-row', { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.85, delay: 1.15, ease: 'power2.out' });
-  }, []);
-
-  const renderedText = t.hero.heading.split(' ').map((word, index) => (
-    <span key={index} style={{ overflow: 'hidden', display: 'inline-block', paddingRight: '0.28em' }}>
-      <span className="word" style={{ display: 'inline-block', willChange: 'transform, opacity' }}>
-        {word}
-      </span>
-    </span>
-  ));
+  const handleTestTap = () => {
+    setTapSuccess(true);
+    setTimeout(() => setTapSuccess(false), 3500);
+  };
 
   return (
-    <section
-      className="hero-section"
-      id="home"
-      ref={containerRef}
-      aria-labelledby="hero-heading"
-    >
+    <section className="hero-section" id="home" aria-labelledby="hero-heading">
       <div className="container-aria">
-        <p className="hero-badge-aria" style={{ marginBottom: '1.25rem' }}>
-          {t.hero.badge}
-        </p>
-        <h1
-          id="hero-heading"
-          className="hero-h1"
-          style={{
-            fontFamily: "'DM Serif Display', Georgia, serif",
-            fontSize: 'clamp(2rem, 4.5vw, 3.25rem)',
-            lineHeight: 1.15,
-            letterSpacing: '-0.02em',
-            fontWeight: 400,
-            color: '#0f172a',
-            marginBottom: '1.5rem',
-            maxWidth: '720px',
-          }}
-        >
-          {renderedText}
-        </h1>
+        <div className="hero-grid-layout">
+          {/* Left Column: Sales Copy & CTAs */}
+          <div className="hero-copy-col">
+            <div className="hero-badge-aria">
+              <span className="hero-badge-pulse" />
+              <span>{t.hero.badge}</span>
+            </div>
 
-        <p
-          className="hero-sub"
-          style={{
-            fontSize: '1.08rem',
-            lineHeight: 1.75,
-            color: 'var(--text-muted)',
-            maxWidth: '460px',
-            fontWeight: 400,
-            marginBottom: '2rem',
-          }}
-        >
-          {t.hero.sub}
-        </p>
+            <h1 id="hero-heading" className="hero-h1">
+              <span className="hero-h1-lead">{t.hero.headingStart} </span>
+              <span className="hero-h1-gradient">{t.hero.headingAccent}</span>
+            </h1>
 
-        <div className="hero-actions-row" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
-          <MagneticElement>
-            <a
-              href="#cta"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                background: 'linear-gradient(135deg,#0e7490,var(--blue-bright))',
-                color: '#fff',
-                textDecoration: 'none',
-                padding: '0.85rem 1.65rem',
-                borderRadius: '12px',
-                fontWeight: 600,
-                fontSize: '0.95rem',
-                boxShadow: '0 8px 28px rgba(8,145,178,.3)',
-              }}
-            >
-              {t.hero.cta}
-              <ArrowRight size={18} strokeWidth={2.5} aria-hidden />
-            </a>
-          </MagneticElement>
-          <a
-            href="#why-aria"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.35rem',
-              color: 'var(--text-subtle)',
-              textDecoration: 'none',
-              fontSize: '0.9rem',
-              padding: '0.5rem 0.75rem',
-              borderRadius: '10px',
-              transition: 'color .2s, background .2s',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = '#0f172a';
-              e.currentTarget.style.background = 'rgba(8,145,178,.08)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = '';
-              e.currentTarget.style.background = '';
-            }}
-          >
-            {t.hero.seeOffers}
-            <ArrowDown size={14} strokeWidth={2} aria-hidden />
-          </a>
+            <p className="hero-sub">
+              {t.hero.sub}
+            </p>
+
+            <div className="hero-actions-row">
+              <MagneticElement>
+                <a href="#book" className="btn-primary-hero">
+                  <span>{t.hero.ctaPrimary}</span>
+                  <ArrowRight size={18} strokeWidth={2.5} aria-hidden />
+                </a>
+              </MagneticElement>
+
+              <MagneticElement>
+                <a href="#proof" className="btn-secondary-hero">
+                  <span>{t.hero.ctaSecondary}</span>
+                </a>
+              </MagneticElement>
+            </div>
+
+            {/* Trust Proof Bar */}
+            <div className="hero-trust-bar">
+              {t.hero.trustBadges.map((badge, idx) => (
+                <div key={idx} className="trust-badge-item">
+                  <div className="trust-badge-val">{badge.value}</div>
+                  <div className="trust-badge-lbl">{badge.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Column: Interactive Acrylic NFC & Storefront Simulation */}
+          <div className="hero-visual-col">
+            <div className="hero-visual-card-glass">
+              {/* Standout Header Badge */}
+              <div className="visual-card-header">
+                <div className="visual-live-dot" />
+                <span className="visual-card-tag">Interactive Review Automation Preview</span>
+              </div>
+
+              {/* Physical Stand + Mobile Phone Interactive Demo */}
+              <div className="visual-stand-demo-wrapper">
+                <div className="acrylic-stand-card">
+                  <div className="stand-badge-top">PHYSICAL ACRYLIC STAND</div>
+                  <div className="stand-g-logo">
+                    <span className="g-letter">G</span>
+                    <div className="stand-stars">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} size={14} fill="#eab308" color="#eab308" />
+                      ))}
+                    </div>
+                  </div>
+                  <div className="stand-instruction">TAP PHONE ON STAND</div>
+                  <div className="stand-nfc-wave">
+                    <span className="wave-ring r1" />
+                    <span className="wave-ring r2" />
+                    <Smartphone size={32} className="stand-phone-icon" />
+                  </div>
+
+                  <button 
+                    type="button" 
+                    onClick={handleTestTap}
+                    className={`btn-simulate-tap ${tapSuccess ? 'tapped' : ''}`}
+                    aria-label="Simulate tapping customer phone on NFC stand"
+                  >
+                    {tapSuccess ? '✓ 5★ Google Review Triggered!' : '👉 Click to Simulate Customer Tap'}
+                  </button>
+                </div>
+
+                {/* Pop-up Google 5-Star Simulation Dialog */}
+                {tapSuccess && (
+                  <div className="simulated-google-popup animate-pop">
+                    <div className="popup-google-brand">
+                      <span className="popup-g-icon">G</span>
+                      <strong>Google Maps Review</strong>
+                    </div>
+                    <p className="popup-prompt">Rate & Review Your Experience</p>
+                    <div className="popup-stars-row">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} size={22} fill="#eab308" color="#eab308" className="star-bounce" />
+                      ))}
+                    </div>
+                    <div className="popup-success-badge">
+                      <CheckCircle2 size={16} color="#16a34a" />
+                      <span>Opens automatically on customer's phone!</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Card Footer Trust Note */}
+              <div className="visual-card-footer">
+                <div className="footer-feature-chip">
+                  <Zap size={14} color="#0891b2" />
+                  <span>Sub-second mobile load</span>
+                </div>
+                <div className="footer-feature-chip">
+                  <ShieldCheck size={14} color="#0891b2" />
+                  <span>100% Code Ownership</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default Hero;
+}
